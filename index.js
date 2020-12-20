@@ -17,7 +17,12 @@ c1.AddChild(new mylib.Node("child12","child12 value"))
 console.log (root.ToXML())
 if (root.Exists("child12"))println("found "+"child12")
 root.Exists("child12","fake value")? println("found "+"child12"):println("no child12 fake value")
-
+// try inserting a Node after a returned Node
+let found = root.GetNode("child12","child12 value")
+if (found!=null)
+  found.AddChild(new mylib.Node("child13"))
+println("print it again after inserting a child")
+console.log(root.ToXML())
 
 /*
 myfs.mkdir("../../Flightplans/KSFO",true)

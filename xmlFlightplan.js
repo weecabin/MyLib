@@ -45,7 +45,7 @@ class Node
   */
   Exists(name,value)
   {
-    println("value="+value)
+    //println("value="+value)
     if (this.Name==name && (this.Value==value || value==undefined))
       return true;
     var i=0;
@@ -57,6 +57,28 @@ class Node
     }
     return false;
   }
+  
+    /*
+  checks for the existance of a Node with the specifed 
+  name & value, or just the name if the value field is empty
+  at any level below this node
+  */
+  GetNode(name,value)
+  {
+    //println("in "+this.Value)
+    if (this.Name==name && (this.Value==value || value==undefined))
+      return this;
+    var i=0;
+    while(i<this.Children.length)
+    { 
+      let child = this.Children[i].GetNode(name,value)
+      if (child!=null)
+        return child;
+      i++;
+    }
+    return null;
+  }
+  
   // returns a string representing the data below this Node
   ToXML()
   {
