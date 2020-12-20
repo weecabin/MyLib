@@ -42,7 +42,7 @@ function mkdir(path)
       if(!fs.existsSync(sofar))
       {
         let createErr=false
-        /*
+        
         fs.mkdirSync(sofar, 0766, function(err)
         {
           if(err)
@@ -52,7 +52,7 @@ function mkdir(path)
             // echo the result back
             response.send("ERROR! Can't make directory! "+sofar+"\n");
           }
-        });*/
+        });
         if(!createErr) println(sofar+" created");
       }
       else
