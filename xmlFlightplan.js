@@ -38,11 +38,15 @@ class Node
     this.Children.push(childNode);
     return childNode;
   }
-  // checks for the existance of a Node with the specifed name & value
-  // at any level below this node
+  /*
+  checks for the existance of a Node with the specifed 
+  name & value, or just the name if the value field is empty
+  at any level below this node
+  */
   Exists(name,value)
   {
-    if (this.Name==name && this.Value==value)
+    println("value="+value)
+    if (this.Name==name && (this.Value==value || value==undefined))
       return true;
     var i=0;
     while(i<this.Children.length)

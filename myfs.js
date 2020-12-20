@@ -14,9 +14,9 @@ if the passed in directory exists, does nothing
 of it doesnt, it creates it, checking each folder as it goes.
 supports ./dir1/dir1  or  ../../dir1/dir2
 */
-function mkdir(path)
+function mkdir(path,debug=false)
 {
-  println("mkdir "+path)
+  if(debug)println("mkdir "+path)
   // split the path by folder, then check the existance of each one and create as needed
   let split = path.split("/")
   //println(split)
@@ -29,7 +29,7 @@ function mkdir(path)
     let dotindir = dotpos>=0?true:false
     if (dotpos>0)
     {
-      println("exiting, filename found: "+dir)
+      if(debug)println("exiting, filename found: "+dir)
       return
     }
     if (sofar.length==0)
@@ -38,26 +38,28 @@ function mkdir(path)
       sofar+="/"+dir
     if (!dotindir)
     {
-      println("check: "+sofar)
+      if(debug)println("check: "+sofar)
       if(!fs.existsSync(sofar))
       {
         let createErr=false
-        
-        fs.mkdirSync(sofar, 0766, function(err)
+        if(!debug)
         {
-          if(err)
+          fs.mkdirSync(sofar, 0766, function(err)
           {
-            createErr=true
-            console.log(err);
-            // echo the result back
-            response.send("ERROR! Can't make directory! "+sofar+"\n");
-          }
-        });
+            if(err)
+            {
+              createErr=true
+              console.log(err);
+              // echo the result back
+              response.send("ERROR! Can't make directory! "+sofar+"\n");
+            }
+          });
+        }
         if(!createErr) println(sofar+" created");
       }
       else
       {
-        println(sofar+" already exists")
+        if (debug)println(sofar+" already exists")
       }
     }
   }
