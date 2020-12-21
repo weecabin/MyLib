@@ -21,7 +21,11 @@ root.Exists("child12","fake value")? println("found "+"child12"):println("no chi
 // try inserting a Node after a returned Node
 let found = root.GetNode("child12","child12 value")
 if (found!=null)
+{
   found.AddChild(new myxml.Node("child13"))
+  println("parent value="+found.Parent.Value)
+}
+ 
 println("print it again after inserting a child")
 console.log(root.ToXML())
 

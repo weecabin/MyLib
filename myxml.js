@@ -29,10 +29,12 @@ class Node
     this.Children=[];
     this.Indent="";
     this.Version = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+    this.Parent=null;
   }
   // adds a Node below this Node
   AddChild(childNode)
   {
+    childNode.Parent=this;
     childNode.Version="";
     childNode.Indent+=this.Indent+"  ";
     this.Children.push(childNode);
