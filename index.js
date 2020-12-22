@@ -1,4 +1,4 @@
-const myfp=require("./xmlFlightplan")
+const myfp=require("./flightplan")
 const myxml=require("./myxml")
 const myfs=require("./myfs")
 
