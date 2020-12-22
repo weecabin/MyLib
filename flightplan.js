@@ -22,13 +22,21 @@ class FlightPlan
   constructor(name)
   {
     this.Name=name;
-    this.Fp = new Node("flight-plan","", "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www8.garmin.com/xmlschemas/FlightPlan/v1\"");
+    this.Fp = new Node("flight-plan",name, "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www8.garmin.com/xmlschemas/FlightPlan/v1\"");
     this.WaypointTable = new Node("waypoint-table","");
     this.RouteTable = new Node("route","");
     this.Fp.AddChild(this.WaypointTable);
     this.Fp.AddChild(this.RouteTable);
   }
-  AddUserFix(id,lat,lon)
+  /*
+  id = The text string associated with the fix
+  lat/lon = decimal latitude and longitude, where 
+            North latitude is positive, and south is negative
+            East longitude is positive and west is negative
+  elevation = elevation in feet. will be converted to meters 
+              if not specified, the element won't be generated
+  */
+  AddUserFix(id,lat,lon,elevation)
   {
     if (!this.WaypointTable.Exists("identifier",id))
     {
@@ -38,6 +46,8 @@ class FlightPlan
       wp.AddChild(new Node("type","USER WAYPOINT"));
       wp.AddChild(new Node("lat",lat));
       wp.AddChild(new Node("lon",lon));
+      if (elevation!=undefined)
+        wp.AddChild(new Node("elevation",(elevation/3.28084).toFixed(2)))
     }
     var rt = new Node("route-point","");
     this.RouteTable.AddChild(rt);

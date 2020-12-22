@@ -1,6 +1,7 @@
 const myfp=require("./flightplan")
 const myxml=require("./myxml")
 const myfs=require("./myfs")
+const fs=require("fs")
 
 var printHold = ""
 const print = (msg) => {
@@ -29,8 +30,14 @@ println("print it again after inserting a child")
 console.log(root.ToXML())
 
 let fp= new myfp.FlightPlan("testing");
-fp.AddUserFix("fix1",32,-117)
+fp.AddUserFix("fix1",32,-117,5000)
 fp.AddUserFix("fix2",33,-118)
+fs.writeFile("./test.fpl", fp.ToXml() , function (err) 
+  {
+    if (err) throw err;
+    console.log("test.fpl"+ ' Replaced!');
+  });
+
 println(fp.ToXml())
 
 /*
