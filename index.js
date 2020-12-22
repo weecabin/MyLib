@@ -12,23 +12,31 @@ const println = (msg) => {
   printHold="";
 }
 
+/*
+test code for myxml (Currently just the Node class)
+*/
 let root = new myxml.Node("root","value","attr=\"attr value\"")
 let c1=root.AddChild(new myxml.Node("child1","child1 value"))
 c1.AddChild(new myxml.Node("child12","child12 value"))
 console.log (root.ToXML())
+// find a node
 if (root.Exists("child12"))println("found "+"child12")
+println("search for a node with an invalid value")
 root.Exists("child12","fake value")? println("found "+"child12"):println("no child12 fake value")
-// try inserting a Node after a returned Node
+println("retrieve a node, then insert one after it")
 let found = root.GetNode("child12","child12 value")
 if (found!=null)
 {
   found.AddChild(new myxml.Node("child13"))
   println("parent value="+found.Parent.Value)
 }
- 
-println("print it again after inserting a child")
+println("print from root after inserting a child")
 console.log(root.ToXML())
 
+/*
+flightplan testing
+create a small flightplan, save it to a file, and verify upload to IF
+*/
 let fp= new myfp.FlightPlan("testing");
 fp.AddUserFix("fix1",32,-117,5000)
 fp.AddUserFix("fix2",33,-118)
@@ -37,9 +45,14 @@ fs.writeFile("./test.fpl", fp.ToXml() , function (err)
     if (err) throw err;
     console.log("test.fpl"+ ' Replaced!');
   });
-
+// print it out
 println(fp.ToXml())
 
+/*
+myfs testing
+mkdir will create folders as necessary to build the complete path
+it will stop if it encounters a filename
+*/
 /*
 myfs.mkdir("../../Flightplans/KSFO",true)
 println("")
