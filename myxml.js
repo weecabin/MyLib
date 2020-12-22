@@ -86,7 +86,11 @@ class Node
   {
     //println("building "+this.Name)
     var ret = this.Version;
-    ret += this.BuildElement();
+    ret += this.Indent+"<"+this.Name+this.Attribute+">"+this.Value;
+    if (this.Children.length==0)
+      ret += "</"+this.Name+">\n";
+    else
+      ret += "\n";
     var i=0;
     while (i<this.Children.length)
     {
@@ -97,20 +101,5 @@ class Node
       ret+=this.Indent+"</"+this.Name+">\n";
     return ret;
   }
-  /*
-  creates this structure if no children
-  <name attribute>value</name>
-  or this if children
-  <name attribute>value
-  */
-  BuildElement()
-  {
-    var el = this.Indent+"<"+this.Name+this.Attribute+">"+this.Value;
-    if (this.Children.length==0)
-      el += "</"+this.Name+">\n";
-    else
-      el += "\n";
-    return el;
-  }
-}
+ }
  module.exports.Node = Node;

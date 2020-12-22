@@ -11,7 +11,6 @@ const println = (msg) => {
   printHold="";
 }
 
-
 let root = new myxml.Node("root","value","attr=\"attr value\"")
 let c1=root.AddChild(new myxml.Node("child1","child1 value"))
 c1.AddChild(new myxml.Node("child12","child12 value"))
@@ -30,10 +29,10 @@ println("print it again after inserting a child")
 console.log(root.ToXML())
 
 let fp= new myfp.FlightPlan("testing");
-
 fp.AddUserFix("fix1",32,-117)
 fp.AddUserFix("fix2",33,-118)
 println(fp.ToXml())
+
 /*
 myfs.mkdir("../../Flightplans/KSFO",true)
 println("")
