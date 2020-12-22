@@ -63,7 +63,8 @@ class Node
     /*
   checks for the existance of a Node with the specifed 
   name & value, or just the name if the value field is empty
-  at any level below this node
+  at any level below this node. 
+  Returns a reference to the node if found, or null if not
   */
   GetNode(name,value)
   {
