@@ -71,6 +71,8 @@ myfs.mkdir("test")
 /*
 mystrings testing
 */
+
+
 const srch = 
 [
   "find something is this string string. the target will be identified below",
@@ -85,23 +87,23 @@ const srch =
   ["ge","bm"]
   ]
 ]
+
 /*
 let offset = ms.Occurance(2,"string",srch[0]);
+console.log(offset)
 let newstr= srch[0].substring(offset);
-//console.log(newstr);
+console.log(newstr);
 let newoffset = ms.Occurance(1,"find",srch[0]);
-//console.log(newoffset)
+console.log(newoffset)
 */
 
-//console.log("search params")
-//console.log(srch[0])
-//console.log(srch[1])
-//console.log(srch[2])
+
 let found = ms.FindBracketed(srch[0],srch[1]);
 console.log(found)
 found = ms.FindBracketed(srch[0],srch[1],srch[2]);
 console.log(found)
 
+/*
 const locate=
 [
   [1,"Lat/Long"],
@@ -122,4 +124,5 @@ myhttps.getContent("https://www.airnav.com/airport/ksan")
           process.stdout.write(strings.optionprompt)
         })
         
+*/
 
