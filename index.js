@@ -77,7 +77,11 @@ const srch =
     [1,"the "],
     [1," will"]
   ],
-  ["",""],
+  [
+  ["r","s"],
+  ["a","i"],
+  ["ge","bm"]
+  ]
 ]
 /*
 let offset = ms.Occurance(2,"string",srch[0]);
@@ -91,5 +95,7 @@ let newoffset = ms.Occurance(1,"find",srch[0]);
 //console.log(srch[0])
 //console.log(srch[1])
 //console.log(srch[2])
-let found = ms.FindBracketed(srch[0],srch[1],srch[2]);
+let found = ms.FindBracketed(srch[0],srch[1]);
+console.log(found)
+found = ms.FindBracketed(srch[0],srch[1],srch[2]);
 console.log(found)

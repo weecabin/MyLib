@@ -1,40 +1,7 @@
-const search = [
-  ['https://www.airnav.com/airport/'],
-  ['https://flightplandatabase.com/airport/'],
-  ['https://www.airport-data.com/world-airports/']
-  ];
-  
-/*
-each block in here cerresponds with the same indexed url in search above
-*/
-const searchTags = 
-[
-  [
-  [1,"Lat/Long"],
-  [2,"<BR>"],
-  [3,"<BR>"]
-  ],
-  
-  [
-  [1,"JSON.parse"],
-  [1,"\"lat\":"],
-  [1,",\"mag"]
-  ]
-]
 
-/*
-finally, this is used to replace a substring in the target string
-*/
-const replacestrings =
-[
-  ["",""],
-  ["\"lon\":",""]
-]
-var srchStringIndex =1;
 
-// updates the airport database for airportICAO
-// Does nothing if it already exists
-function FindBracketed(stringToSearch,locate,replace)
+
+function FindBracketed(stringToSearch,locate,substitute)
 {
   //println(xmlString);
   let sub = stringToSearch;
@@ -52,7 +19,13 @@ function FindBracketed(stringToSearch,locate,replace)
     if (i>=locate.length-1)
     {
       let ret = sub.substring(0,n);
-      ret = ret.replace(replace[0], replace[1])
+      if (substitute!=undefined)
+      {
+        for (ri=0;ri< substitute.length;ri++)
+        {
+          ret = ret.replace(substitute[ri][0], substitute[ri][1])
+        }
+      }
       return ret;
     }
     sub = sub.substring(n+ locate[i][1].length)
