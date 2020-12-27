@@ -12,7 +12,8 @@ multidimensional array of search parameters...
 will find in succession, the 2nd occurance of "string"
 then the first occurance of "the "
 then the frst occursnce of " will"
-it will return the string bracketed by "the " and " will"
+it will return the string bracketed by the last two search parameters,
+or in this case, the string between "the " and " will"
 */
 function FindBracketed(stringToSearch,locate,substitute)
 {
