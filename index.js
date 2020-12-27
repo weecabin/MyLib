@@ -3,6 +3,8 @@ const myxml=require("./myxml")
 const myfs=require("./myfs")
 const ms=require("./mystrings")
 const fs=require("fs")
+const https=require("https") 
+const myhttps=require("./myhttps")
 
 var printHold = ""
 const print = (msg) => {
@@ -99,3 +101,25 @@ let found = ms.FindBracketed(srch[0],srch[1]);
 console.log(found)
 found = ms.FindBracketed(srch[0],srch[1],srch[2]);
 console.log(found)
+
+const locate=
+[
+  [1,"Lat/Long"],
+  [2,"<BR>"],
+  [1,"<BR>"]
+]
+
+myhttps.getContent("https://www.airnav.com/airport/ksan")
+        .then((html)=>
+        {
+          let ll=ms.FindBracketed(html,locate)
+          console.log(ll)
+        }
+        )
+        .catch((err)=>
+        {
+          console.log("Error-failed to load: "+url);
+          process.stdout.write(strings.optionprompt)
+        })
+        
+
