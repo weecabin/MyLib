@@ -75,7 +75,7 @@ mystrings testing
 
 const srch = 
 [
-  "find something is this string string. the target will be identified below",
+  "find something in this string string. the target will be identified below",
   [
     [2,"string"],
     [1,"the "],
@@ -95,26 +95,64 @@ let newstr= srch[0].substring(offset);
 console.log(newstr);
 let newoffset = ms.Occurance(1,"find",srch[0]);
 console.log(newoffset)
-*/
+
 
 
 let found = ms.FindBracketed(srch[0],srch[1]);
 console.log(found)
 found = ms.FindBracketed(srch[0],srch[1],srch[2]);
 console.log(found)
+*/
 
 /*
-const locate=
+The following strings are used to find text inside a website
+
+search=the url of the website
+
+searchTags=an array of array of array of strings used to locate the text to be returned.
+first element is the occurance number of the string
+second element is the string to locate
+the last two arrays bracket the target string
+*/
+const search = [
+  ['https://www.airnav.com/airport/'],
+  ['https://flightplandatabase.com/airport/'],
+  ['https://www.airport-data.com/world-airports/']
+  ];
+  
+/*
+each block in here cerresponds with the same indexed url in search above
+*/
+const searchTags = 
 [
+  [
   [1,"Lat/Long"],
   [2,"<BR>"],
-  [1,"<BR>"]
+  [3,"<BR>"]
+  ],
+  
+  [
+  [1,"JSON.parse"],
+  [1,"\"lat\":"],
+  [1,",\"mag"]
+  ]
 ]
 
-myhttps.getContent("https://www.airnav.com/airport/ksan")
+const substitute =
+[
+  [
+    ["",""]
+  ],
+  [
+    ["\"lon\":",""]
+  ]
+]
+
+myhttps.getContent(search[1]+"ksan")
         .then((html)=>
         {
-          let ll=ms.FindBracketed(html,locate)
+          println(html)
+          let ll=ms.FindBracketed(html,searchTags[1],substitute[1])
           console.log(ll)
         }
         )
@@ -124,5 +162,5 @@ myhttps.getContent("https://www.airnav.com/airport/ksan")
           process.stdout.write(strings.optionprompt)
         })
         
-*/
+
 

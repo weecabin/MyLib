@@ -48,7 +48,7 @@ function FindBracketed(stringToSearch,locate,substitute)
   return sub;
 }
 
-// returns the offset into mainstr for the n'th searchstr'
+// returns the offset into mainstr for the n'th (count) searchstr'
 function Occurence(count,searchstr,mainstr)
 {
   //console.log("Occurance:"+count+"/"+searchstr+"/"+ mainstr)
