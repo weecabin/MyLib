@@ -117,7 +117,8 @@ the last two arrays bracket the target string
 const search = [
   ['https://www.airnav.com/airport/'],
   ['https://flightplandatabase.com/airport/'],
-  ['https://www.airport-data.com/world-airports/']
+  ['https://www.airport-data.com/world-airports/'],
+  ['https://skyvector.com/airport/']
   ];
   
 /*
@@ -148,17 +149,18 @@ const substitute =
   ]
 ]
 
-myhttps.getContent(search[1]+"ksan")
+myhttps.getContent(search[3]+"ksan")
         .then((html)=>
         {
           println(html)
-          let ll=ms.FindBracketed(html,searchTags[1],substitute[1])
+          //let ll=ms.FindBracketed(html,searchTags[1],substitute[1])
           console.log(ll)
         }
         )
         .catch((err)=>
         {
-          console.log("Error-failed to load: "+url);
+          println(err)
+          console.log(err.message);
           process.stdout.write(strings.optionprompt)
         })
         

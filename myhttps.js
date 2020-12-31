@@ -40,7 +40,9 @@ const getContent = function(url) {
     const lib = url.startsWith('https') ? require('https') : require('http');
     const request = lib.get(url, (response) => {
       // handle http errors
-      if (response.statusCode < 200 || response.statusCode > 299) {
+      if (response.statusCode < 200 || response.statusCode > 299) 
+      {
+         //console.log(response);
          reject(new Error('Failed to load page, status code: ' + response.statusCode));
        }
       // temporary data holder
