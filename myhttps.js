@@ -50,6 +50,7 @@ const getContent = function(url) {
       // on every content chunk, push it to the data array
       response.on('data', (chunk) => body.push(chunk));
       // we are done, resolve promise with those joined chunks
+      // .then handler of caller gets this
       response.on('end', () => resolve(body.join('')));
     });
     // handle connection errors of the request
